@@ -1,0 +1,68 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = '''
+⏐$username$hostname \[$directory\] $git_branch $git_commit $git_status 
+⏐$character'''
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[character]
+error_symbol = "[❯](red)"
+success_symbol = "[❯](green)"
+
+[directory]
+format = "[$path]($style)[$lock_symbol]($lock_style)"
+truncate_to_repo=true
+style = "purple"
+read_only = "🔒"
+read_only_style= "red"
+
+[git_branch]
+format = "[$symbol$branch]($style)"
+style = "dimmed purple"
+
+[git_commit]
+#format = "[\\($hash\\)]($style)[\\($tag\\)]($style)"
+style = "dimmed green"
+
+[git_status]
+format ='([\[$all_status$ahead_behind\]]($style))'
+conflicted = "="
+ahead =	"⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count} "
+stashed = "$${count} "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+style =	"dimmed red"
+disabled = false
+
+[username]
+style_user = "dimmed purple"
+show_always = true
+format = "[$user]($style)"
+disabled=false
+
+[hostname]
+ssh_only = true
+trim_at = '.'
+ssh_symbol="@"
+format = '[$symbol$hostname]($style)'
+style = 'dimmed purple'
+disabled = false
+
+[time]
+disabled=true
+
+[cmd_duration]
+disabled=true
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
