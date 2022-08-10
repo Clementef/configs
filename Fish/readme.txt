@@ -1,0 +1,2 @@
+- place at ~/.config/fish to config fish
+    - includes starship and pfetch settings

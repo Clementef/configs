@@ -1,0 +1,1 @@
+- place starship.toml at ~/.config to configure prompt
