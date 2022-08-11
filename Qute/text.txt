@@ -1,0 +1,2 @@
+- place config.py at ~/.qutebrowser
+- place dracula theme (found in dracula folder) at ~/.qutebrowser
