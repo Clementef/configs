@@ -1,2 +1,3 @@
+-- vifm --
 - place vifmrc at ~/.config/vifm
 - place dracula.vifm at ~/.config/vifm/colors
