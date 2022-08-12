@@ -3,6 +3,10 @@ set -e fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $HOME/Applications $fish_user_path
 
 #UNIVERSAL VARS
+set -Ux PF_ASCII "Dragonfly"
+set -Ux PF_COL1 4 #info names
+set -Ux PF_COL3 5 #title data
+set -Ux PF_COL2 9 #title data
 set -Ux PF_INFO "ascii title os host kernel shell memory palette"
 set -Ux TERM alacritty
 
@@ -21,8 +25,11 @@ if status is-interactive
     alias config_starship="vim ~/.config/starship.toml"
     alias config_alacritty="vim ~/.config/alacritty/alacritty.yml"
     alias config_vim="vim ~/.vimrc"
-    alias c="mc"
+    alias f="vifm --select ./"
+    alias c="clear"
     alias py="python3" 
+    alias qute="/Applications/qutebrowser.app/Contents/MacOS/qutebrowser"
+    alias q="/Applications/qutebrowser.app/Contents/MacOS/qutebrowser"
     alias godesk="cd ~/Desktop/"
     alias gogit="cd ~/Git/"
     alias goconfig="cd ~/.config"
