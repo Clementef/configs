@@ -1,0 +1,2 @@
+- find the better discord project at https://betterdiscord.app
+- then install plugins/themes at ~/Library/Application Support/BetterDiscord 

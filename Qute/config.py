@@ -28,7 +28,7 @@ dracula.draw.blood(c, {
 
 
 #dark mode
-config.set("colors.webpage.darkmode.enabled",True)
+#config.set("colors.webpage.darkmode.enabled",True)
 #custom stylesheet
 #config.set("content.user_stylesheets","/")
 
@@ -39,13 +39,13 @@ c.fonts.completion.category = f"bold {fira}"
 c.fonts.completion.entry = fira
 c.fonts.debug_console = firasm
 c.fonts.downloads = firasm
-c.fonts.keyhint = fira
+c.fonts.keyhint = firasm
 c.fonts.messages.error = firasm
 c.fonts.messages.info = firasm
 c.fonts.messages.warning = firasm
 c.fonts.prompts = firasm
 c.fonts.statusbar = fira
-c.fonts.hints = f"bold {fira}"
+c.fonts.hints = f"bold {firasm}"
 c.hints.chars = "asdfghjklie"
 
 #tab settings
@@ -65,7 +65,6 @@ c.url.searchengines = {"DEFAULT": "https://www.google.fi/search?q={}"}
 #binds
 config.bind("<f12>", "inspector")
 config.bind('t','set-cmd-text -s :open -t')
-
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
 # including IndexedDB, DOM storage, filesystem API, service workers, and

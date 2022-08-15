@@ -23,14 +23,15 @@ cursor:
 font:
  size: 15
  normal:
-  family: MonoLisa
+  family: Fira Code
   style: Regular
  bold:
-  family: MonoLisa
+  family: Fira Code
   style: Bold
 
 draw_bold_text_with_bright_colors: true
 
+#dracula
 colors:
  primary:
   background: '#282a36'
