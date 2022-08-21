@@ -1,0 +1,19 @@
+{
+	"theme": "auto",
+	"color_scheme": "Packages/Dracula Color Scheme/Dracula.tmTheme",
+	"font_face": "Fira Code",
+	"font_size": 16,
+	"tab_size": 4,
+	"caret_extra_bottom": 0,
+
+	"rulers":
+	[
+		80
+	],
+	
+	"ignored_packages":
+	[
+		"Minimap",
+		"Vintage",
+	],
+}
