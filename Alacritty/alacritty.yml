@@ -1,5 +1,6 @@
 env:
  TERM: alacritty
+ WINIT_X11_SCALE_FACTOR: "1"
 
 scrolling:
  history: 10000
@@ -7,7 +8,7 @@ scrolling:
 
 window:
  #opacity: 0.965
- decorations: buttonless
+ #decorations: buttonless
  padding:
   x: 5
   y: 5

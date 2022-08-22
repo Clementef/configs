@@ -48,9 +48,8 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "space", lazy.run_extension(extension.DmenuRun(
-        dmenu_lines=5,
-    )))
+    Key([mod], "space", lazy.spawn("rofi -show drun"), desc="Launch Rofi"),
+    Key([mod], "b", lazy.spawn("brave"), desc="Launch Brave"),
 ]
 
 groups = [Group(i) for i in "sdf"]
@@ -66,28 +65,32 @@ for i in groups:
                 desc="Switch to group {}".format(i.name),
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
+#            Key(
+#                [mod, "shift"],
+#                i.name,
+#                lazy.window.togroup(i.name, switch_group=True),
+#                desc="Switch to & move focused window to group {}".format(i.name),
+#            ),
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+             Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+                 desc="move focused window to group {}".format(i.name)),
         ]
     )
 
-drac_colors={
-        "alt":"#44475a",
-        "cur":"#bd93f9"}
+_cols={
+        "bg":"#282a36",
+        "fg":"#f8f8f2",
+        "hl":"#bd93f9",
+        "alt":"#44475a"
+}
 
 layout_theme = {
         "border_width":2,
-        "margin":4,
-        "border_focus":drac_colors["cur"],
-        "border_normal":drac_colors["alt"]}
+        "margin":8,
+        "border_focus":_cols["hl"],
+        "border_normal":_cols["alt"]
+}
 
 layouts =[
     layout.MonadTall(name="tall",**layout_theme),
@@ -97,7 +100,9 @@ layouts =[
 widget_defaults = dict(
     font="Fira Code",
     fontsize=17,
-    padding=3,
+    padding=10,
+    foreground=_cols["fg"],
+    background=_cols["bg"]
 )
 extension_defaults = widget_defaults.copy()
 
@@ -105,30 +110,52 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.Battery(
-                        format="{percent:2.0%} {char} ({hour:d}:{min:02d})", 
-                        discharge_char="v", 
-                        charge_char="^", 
-                        update_interval=5),
+                widget.GroupBox(
+                    highlight_method='line',
+                    borderwidth=2,
+                    margin_y=3,
+                    margin_x=3,
+                    padding_x=5,
+                    padding_y=10,
+                    rounded=False,
+                    this_current_screen_border=_cols["hl"],
+                    this_screen_border=_cols["hl"],
+                    other_current_screen_border=_cols["alt"],
+                    other_screen_border=_cols["alt"],
+                    inactive=_cols["alt"],
+                    active=_cols["fg"],
+                    highlight_color=_cols["bg"],
+                   ),
                 widget.Sep(),
-                widget.Clock(format="%a %I:%M %p"),
-                widget.Sep(),
-                widget.Clock(format="%Y-%m-%d"),
-                widget.QuickExit(countdown_start=1),
+#                widget.WindowName(),
+#                widget.Chord(
+#                    chords_colors={
+#                        "launch": (_cols["bg"],_cols["bg"])
+#                    },
+#                    name_transform=lambda name: name.upper(),
+#                ),
+                widget.WindowTabs(),
+                widget.Spacer(),
+                widget.Volume(fmt="Vol:{}"),
+#                widget.Battery(
+#                        format="{percent:2.0%} {char} ({hour:d}:{min:02d})", 
+#                        discharge_char="v", 
+#                        charge_char="^", 
+#                        update_interval=5),
+#                widget.Sep(),
+#                widget.Wlan(disconnected_message="disconnected"),
+#                widget.CurrentLayout(),
+#                widget.Sep(),
+                widget.Clock(format="%a %I:%M"),
+                widget.Clock(format="%m/%d/%y"),
+                widget.QuickExit(countdown_start=1,
+                                 default_text='[Exit]',
+                                 countdown_format='[Exit]'),
             ],
             24,
-            border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            border_width=[3, 0, 3, 0],  # Draw top and bottom borders
+            border_color=[_cols["bg"],_cols["bg"],_cols["bg"],_cols["bg"]]# Borders are magenta
         ),
     ),
 ]
