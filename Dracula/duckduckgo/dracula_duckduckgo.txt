@@ -1,0 +1,1 @@
+var dracula=["7=282a36","8=f8f8f2","9=bd93f9","ae=t","t=p","s=m","w=n","m=l","o=s","j=282a36","a=p","aa=7e61a5","u=-1","x=6272a4","y=44475a","af=1","ai=1","f=1"];for(var i=0;i<dracula.length;i++)document.cookie=dracula[i];alert('Appearance settings have successfully been updated!');location.reload();
