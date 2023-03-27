@@ -1,2 +1,2 @@
 # configs
-Collection of configs.
+My old configs
